@@ -1,16 +1,16 @@
-#ifndef PRESSURETRANSMITTERPLUGIN_H
-#define PRESSURETRANSMITTERPLUGIN_H
+#ifndef QEPROTECTEDBUTTONPLUGIN_H
+#define QEPROTECTEDBUTTONPLUGIN_H
 
-#include <QtUiPlugin/QDesignerCustomWidgetInterface>
+#include <QDesignerCustomWidgetInterface>
 
-class PressureTransmitterPlugin : public QObject, public QDesignerCustomWidgetInterface
+class QEProtectedButtonPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
     Q_INTERFACES(QDesignerCustomWidgetInterface)
-    // Q_PLUGIN_METADATA(IID "org.qt-project.Qt.PressureTransmitterPlugin")
+    // Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QEProtectedButtonPlugin")
 
 public:
-    PressureTransmitterPlugin(QObject* parent = 0);
+    QEProtectedButtonPlugin(QObject *parent = 0);
 
     bool isContainer() const;
     bool isInitialized() const;
@@ -28,4 +28,4 @@ private:
     bool m_initialized;
 };
 
-#endif // PRESSURETRANSMITTERPLUGIN_H
+#endif // QEPROTECTEDBUTTONPLUGIN_H

@@ -9,11 +9,17 @@ FORMS += \
 HEADERS += \
     constants.h \
     pressure_transmitter.h \
-    pressure_transmitter_plugin.h
+    pressure_transmitter_plugin.h \
+    protected_button.h \
+    protected_button_plugin.h \
+    widgets_collection_plugin.h
 
 SOURCES += \
     pressure_transmitter.cpp \
-    pressure_transmitter_plugin.cpp
+    pressure_transmitter_plugin.cpp \
+    protected_button.cpp \
+    protected_button_plugin.cpp \
+    widgets_collection_plugin.cpp
 
 headers.path  = $$[QT_INSTALL_HEADERS]/
 headers.files = $$HEADERS
