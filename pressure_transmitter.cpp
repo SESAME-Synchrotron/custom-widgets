@@ -21,11 +21,15 @@ void PressureTransmitter::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
 
+    int _width = width();
+    int _height = height();
+    int radius = _width / 2;
+
     painter.setBrush(color);
-    painter.drawEllipse(QPoint(15, 15), 14, 14);
-    painter.drawLine(5, 5, 25, 25);
-    painter.drawLine(5, 25, 25, 5);
-    painter.drawLine(15, 30, 15, 60);
+    painter.drawEllipse(QPoint(radius, 15), 14, 14);
+    painter.drawLine(radius - 10, 5, radius + 10, 25);
+    painter.drawLine(radius - 10, 25, radius + 10, 5);
+    painter.drawLine(radius, 30, radius, _height);
     update();
 }
 
