@@ -4,9 +4,12 @@ QT       += designer widgets uiplugin
 TARGET = customwidgets
 
 FORMS += \
+    butterfly_valve.ui \
     pressure_transmitter.ui
 
 HEADERS += \
+    butterfly_valve.h \
+    butterfly_valve_plugin.h \
     constants.h \
     pressure_transmitter.h \
     pressure_transmitter_plugin.h \
@@ -15,6 +18,8 @@ HEADERS += \
     widgets_collection_plugin.h
 
 SOURCES += \
+    butterfly_valve.cpp \
+    butterfly_valve_plugin.cpp \
     pressure_transmitter.cpp \
     pressure_transmitter_plugin.cpp \
     protected_button.cpp \
