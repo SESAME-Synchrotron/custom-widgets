@@ -49,9 +49,11 @@ void PressureTransmitter::setPVName(const QString name)
 
      if (!this->pv) {
          QObject::disconnect(this->pv, &QEpicsPV::valueChanged, this, &PressureTransmitter::onChanged);
+         QObject::disconnect(this->pv, &QEpicsPV::connectionChanged, this, &PressureTransmitter::onConnectionChanged);
      }
      this->pv = new QEpicsPV(this->m_variableName);
      QObject::connect(this->pv, &QEpicsPV::valueChanged, this, &PressureTransmitter::onChanged);
+     QObject::connect(this->pv, &QEpicsPV::connectionChanged, this, &PressureTransmitter::onConnectionChanged);
 }
 
 void PressureTransmitter::setThreshold(const double threshold)
@@ -65,5 +67,13 @@ void PressureTransmitter::onChanged(const QVariant &value)
         color = Qt::green;
     else
         color = Qt::red;
+    update();
+    setToolTip(pvName() + " - " + QString::number(value.toDouble()));
+}
+
+void PressureTransmitter::onConnectionChanged(bool state)
+{
+    if (!state)
+        color = Qt::gray;
     update();
 }

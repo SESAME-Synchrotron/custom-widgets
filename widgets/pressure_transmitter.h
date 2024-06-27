@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QMouseEvent>
 
 #include <qepicspv.h>
 
@@ -31,6 +32,7 @@ public:
 
 public slots:
     void onChanged(const QVariant& value);
+    void onConnectionChanged(bool state);
 
 protected:
     void paintEvent(QPaintEvent* event) override;

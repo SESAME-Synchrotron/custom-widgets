@@ -4,27 +4,27 @@ QT       += designer widgets uiplugin
 TARGET = customwidgets
 
 FORMS += \
-    butterfly_valve.ui \
-    pressure_transmitter.ui
+    widgets/butterfly_valve.ui \
+    widgets/pressure_transmitter.ui
 
 HEADERS += \
-    butterfly_valve.h \
-    butterfly_valve_plugin.h \
+    widgets/butterfly_valve.h \
+    plugins/butterfly_valve_plugin.h \
     constants.h \
-    pressure_transmitter.h \
-    pressure_transmitter_plugin.h \
-    protected_button.h \
-    protected_button_plugin.h \
-    widgets_collection_plugin.h
+    widgets/pressure_transmitter.h \
+    plugins/pressure_transmitter_plugin.h \
+    widgets/protected_button.h \
+    plugins/protected_button_plugin.h \
+    plugins/widgets_collection_plugin.h
 
 SOURCES += \
-    butterfly_valve.cpp \
-    butterfly_valve_plugin.cpp \
-    pressure_transmitter.cpp \
-    pressure_transmitter_plugin.cpp \
-    protected_button.cpp \
-    protected_button_plugin.cpp \
-    widgets_collection_plugin.cpp
+    widgets/butterfly_valve.cpp \
+    plugins/butterfly_valve_plugin.cpp \
+    widgets/pressure_transmitter.cpp \
+    plugins/pressure_transmitter_plugin.cpp \
+    widgets/protected_button.cpp \
+    plugins/protected_button_plugin.cpp \
+    plugins/widgets_collection_plugin.cpp
 
 headers.path  = $$[QT_INSTALL_HEADERS]/
 headers.files = $$HEADERS

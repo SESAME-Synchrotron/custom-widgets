@@ -82,4 +82,5 @@ void ButterflyValve::onChanged(const QVariant &value)
     }
 
     update();
+    setToolTip(pvName() + " - " + QString::number(value.toDouble()));
 }
