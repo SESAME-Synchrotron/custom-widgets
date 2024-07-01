@@ -1,7 +1,14 @@
 TEMPLATE  = lib
 CONFIG   += plugin
 QT       += designer widgets uiplugin
-TARGET = customwidgets
+TARGET    = customwidgets
+
+DESTDIR          = build-
+OBJECTS_DIR      = $$DESTDIR
+MOC_DIR          = $$DESTDIR
+RCC_DIR          = $$DESTDIR
+UI_DIR           = $$DESTDIR
+QMAKE_DISTCLEAN += -r $$DESTDIR
 
 FORMS += \
     widgets/butterfly_valve.ui \
