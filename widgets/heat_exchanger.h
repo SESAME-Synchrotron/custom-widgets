@@ -1,5 +1,5 @@
-#ifndef BUTTERFLY_VALVE_H
-#define BUTTERFLY_VALVE_H
+#ifndef HEAT_EXCHANGER_H
+#define HEAT_EXCHANGER_H
 
 #include <QWidget>
 #include <QPaintEvent>
@@ -10,17 +10,17 @@
 #include "constants.h"
 
 namespace Ui {
-class ButterflyValve;
+class HeatExchanger;
 }
 
-class ButterflyValve : public QWidget
+class HeatExchanger : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QString PVName    READ pvName       WRITE setPVName);
 
 public:
-    explicit ButterflyValve(QWidget *parent = nullptr);
-    ~ButterflyValve();
+    explicit HeatExchanger(QWidget *parent = nullptr);
+    ~HeatExchanger();
 
     QString pvName() const;
     void setPVName(const QString name);
@@ -33,14 +33,12 @@ protected:
     void paintEvent(QPaintEvent* event) override;
 
 private:
-    Ui::ButterflyValve *ui;
+    Ui::HeatExchanger *ui;
 
-    int m_width;
-    int m_height;
     QColor color;
     QString m_variableName;
 
     QEpicsPV* pv;
 };
 
-#endif // BUTTERFLY_VALVE_H
+#endif // HEAT_EXCHANGER_H

@@ -5,12 +5,18 @@ TARGET = customwidgets
 
 FORMS += \
     widgets/butterfly_valve.ui \
+    widgets/flow_transmitter.ui \
+    widgets/heat_exchanger.ui \
     widgets/pressure_transmitter.ui
 
 HEADERS += \
+    plugins/flow_transmitter_plugin.h \
+    plugins/heat_exchanger_plugin.h \
     widgets/butterfly_valve.h \
     plugins/butterfly_valve_plugin.h \
     constants.h \
+    widgets/flow_transmitter.h \
+    widgets/heat_exchanger.h \
     widgets/pressure_transmitter.h \
     plugins/pressure_transmitter_plugin.h \
     widgets/protected_button.h \
@@ -18,8 +24,12 @@ HEADERS += \
     plugins/widgets_collection_plugin.h
 
 SOURCES += \
+    plugins/flow_transmitter_plugin.cpp \
+    plugins/heat_exchanger_plugin.cpp \
     widgets/butterfly_valve.cpp \
     plugins/butterfly_valve_plugin.cpp \
+    widgets/flow_transmitter.cpp \
+    widgets/heat_exchanger.cpp \
     widgets/pressure_transmitter.cpp \
     plugins/pressure_transmitter_plugin.cpp \
     widgets/protected_button.cpp \
