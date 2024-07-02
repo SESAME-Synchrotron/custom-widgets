@@ -1,4 +1,4 @@
-#include "heat_exchanger.h"
+#include "widgets/heat_exchanger.h"
 #include "ui_heat_exchanger.h"
 
 HeatExchanger::HeatExchanger(QWidget *parent) :
@@ -56,6 +56,7 @@ void HeatExchanger::onConnectionChanged(bool state)
 
 void HeatExchanger::onChanged(const QVariant &value)
 {
+    Q_UNUSED(value)
     update();
 }
 

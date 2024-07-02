@@ -1,11 +1,9 @@
-#include "pressure_transmitter_plugin.h"
-#include "pressure_transmitter.h"
-
-#include <QtPlugin>
+#include "plugins/pressure_transmitter_plugin.h"
+#include "widgets/pressure_transmitter.h"
 
 PressureTransmitterPlugin::PressureTransmitterPlugin(QObject *parent)
-    : QObject(parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 

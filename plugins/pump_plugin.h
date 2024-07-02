@@ -1,7 +1,6 @@
 #ifndef PUMPPLUGIN_H
 #define PUMPPLUGIN_H
 
-#include <QWidget>
 #include <QtUiPlugin/QDesignerCustomWidgetInterface>
 
 class PumpPlugin : public QObject, public QDesignerCustomWidgetInterface

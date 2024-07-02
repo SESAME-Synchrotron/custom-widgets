@@ -1,13 +1,12 @@
 #ifndef QEPROTECTEDBUTTONPLUGIN_H
 #define QEPROTECTEDBUTTONPLUGIN_H
 
-#include <QDesignerCustomWidgetInterface>
+#include <QtUiPlugin/QDesignerCustomWidgetInterface>
 
 class QEProtectedButtonPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
     Q_INTERFACES(QDesignerCustomWidgetInterface)
-    // Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QEProtectedButtonPlugin")
 
 public:
     QEProtectedButtonPlugin(QObject *parent = 0);

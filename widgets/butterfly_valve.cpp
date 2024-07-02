@@ -1,4 +1,4 @@
-#include "butterfly_valve.h"
+#include "widgets/butterfly_valve.h"
 #include "ui_butterfly_valve.h"
 
 ButterflyValve::ButterflyValve(QWidget *parent) :

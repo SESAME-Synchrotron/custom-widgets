@@ -1,11 +1,9 @@
-#include "protected_button.h"
-#include "protected_button_plugin.h"
-
-#include <QtPlugin>
+#include "widgets/protected_button.h"
+#include "plugins/protected_button_plugin.h"
 
 QEProtectedButtonPlugin::QEProtectedButtonPlugin(QObject *parent)
-    : QObject(parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 

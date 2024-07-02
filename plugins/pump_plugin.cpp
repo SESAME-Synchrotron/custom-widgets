@@ -1,11 +1,9 @@
-#include "pump_plugin.h"
+#include "plugins/pump_plugin.h"
 #include "widgets/pump.h"
 
-#include <QtPlugin>
-
 PumpPlugin::PumpPlugin(QObject *parent)
-    : QObject(parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 

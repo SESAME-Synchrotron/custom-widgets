@@ -7,7 +7,6 @@ class FlowTransmitterPlugin : public QObject, public QDesignerCustomWidgetInterf
 {
     Q_OBJECT
     Q_INTERFACES(QDesignerCustomWidgetInterface)
-    // Q_PLUGIN_METADATA(IID "org.qt-project.Qt.FlowTransmitterPlugin")
 
 public:
     FlowTransmitterPlugin(QObject* parent = 0);

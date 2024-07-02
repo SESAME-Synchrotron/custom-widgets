@@ -1,4 +1,4 @@
-#include "protected_button.h"
+#include "widgets/protected_button.h"
 
 QEProtectedButton::QEProtectedButton(QWidget *parent) :
     QEPushButton(parent)

@@ -1,4 +1,4 @@
-#include "flow_transmitter.h"
+#include "widgets/flow_transmitter.h"
 #include "ui_flow_transmitter.h"
 
 FlowTransmitter::FlowTransmitter(QWidget *parent) :

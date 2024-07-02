@@ -1,4 +1,4 @@
-#include "pressure_transmitter.h"
+#include "widgets/pressure_transmitter.h"
 #include "ui_pressure_transmitter.h"
 
 PressureTransmitter::PressureTransmitter(QWidget *parent) :

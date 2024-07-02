@@ -1,4 +1,4 @@
-#include "pump.h"
+#include "widgets/pump.h"
 #include "ui_pump.h"
 
 Pump::Pump(QWidget *parent) :
@@ -99,7 +99,7 @@ void Pump::onChanged(const QVariant &value)
 
 void Pump::onConnectionChanged(bool state)
 {
-//    if (!state)
-//        color = Qt::gray;
+    if (!state)
+        color = Qt::gray;
     update();
 }

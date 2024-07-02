@@ -1,8 +1,9 @@
-#include "heat_exchanger_plugin.h"
+#include "plugins/heat_exchanger_plugin.h"
 #include "widgets/heat_exchanger.h"
 
 HeatExchangerPlugin::HeatExchangerPlugin(QObject* parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 

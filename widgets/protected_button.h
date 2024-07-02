@@ -2,9 +2,10 @@
 #define QEPROTECTEDBUTTON_H
 
 #include <QEPushButton.h>
-#include "qepicspv.h"
 #include <QMessageBox>
 #include <QMouseEvent>
+
+#include "qepicspv.h"
 
 #include <algorithm>
 using std::find;

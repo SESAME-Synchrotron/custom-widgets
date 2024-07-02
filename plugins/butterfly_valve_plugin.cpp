@@ -1,8 +1,9 @@
-#include "butterfly_valve_plugin.h"
-#include "butterfly_valve.h"
+#include "plugins/butterfly_valve_plugin.h"
+#include "widgets/butterfly_valve.h"
 
 ButterflyValvePlugin::ButterflyValvePlugin(QObject *parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 

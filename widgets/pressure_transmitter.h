@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
-#include <QMouseEvent>
 
 #include <qepicspv.h>
 

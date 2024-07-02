@@ -1,11 +1,9 @@
-#include "flow_transmitter_plugin.h"
+#include "plugins/flow_transmitter_plugin.h"
 #include "widgets/flow_transmitter.h"
 
-#include <QtPlugin>
-
 FlowTransmitterPlugin::FlowTransmitterPlugin(QObject *parent)
-    : QObject(parent)
 {
+    Q_UNUSED(parent)
     m_initialized = false;
 }
 
