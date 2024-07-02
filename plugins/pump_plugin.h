@@ -1,15 +1,16 @@
-#ifndef PRESSURETRANSMITTERPLUGIN_H
-#define PRESSURETRANSMITTERPLUGIN_H
+#ifndef PUMPPLUGIN_H
+#define PUMPPLUGIN_H
 
+#include <QWidget>
 #include <QtUiPlugin/QDesignerCustomWidgetInterface>
 
-class PressureTransmitterPlugin : public QObject, public QDesignerCustomWidgetInterface
+class PumpPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
     Q_INTERFACES(QDesignerCustomWidgetInterface)
 
 public:
-    PressureTransmitterPlugin(QObject* parent = 0);
+    PumpPlugin(QObject* parent = 0);
 
     bool isContainer() const;
     bool isInitialized() const;
@@ -27,4 +28,4 @@ private:
     bool m_initialized;
 };
 
-#endif // PRESSURETRANSMITTERPLUGIN_H
+#endif // PUMPPLUGIN_H
