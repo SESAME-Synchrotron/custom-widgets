@@ -11,6 +11,7 @@ UI_DIR           = $$DESTDIR
 QMAKE_DISTCLEAN += -r $$DESTDIR
 
 FORMS += \
+    widgets/ahu_fan.ui \
     widgets/butterfly_valve.ui \
     widgets/flow_transmitter.ui \
     widgets/heat_exchanger.ui \
@@ -18,9 +19,11 @@ FORMS += \
     widgets/pump.ui
 
 HEADERS += \
+    plugins/ahu_fan_plugin.h \
     plugins/flow_transmitter_plugin.h \
     plugins/heat_exchanger_plugin.h \
     plugins/pump_plugin.h \
+    widgets/ahu_fan.h \
     widgets/butterfly_valve.h \
     plugins/butterfly_valve_plugin.h \
     constants.h \
@@ -34,9 +37,11 @@ HEADERS += \
     widgets/pump.h
 
 SOURCES += \
+    plugins/ahu_fan_plugin.cpp \
     plugins/flow_transmitter_plugin.cpp \
     plugins/heat_exchanger_plugin.cpp \
     plugins/pump_plugin.cpp \
+    widgets/ahu_fan.cpp \
     widgets/butterfly_valve.cpp \
     plugins/butterfly_valve_plugin.cpp \
     widgets/flow_transmitter.cpp \

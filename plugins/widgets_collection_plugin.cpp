@@ -5,6 +5,7 @@
 #include "plugins/heat_exchanger_plugin.h"
 #include "plugins/flow_transmitter_plugin.h"
 #include "plugins/pump_plugin.h"
+#include "plugins/ahu_fan_plugin.h"
 
 WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     : QObject(parent)
@@ -15,6 +16,7 @@ WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     m_widgets.append(new HeatExchangerPlugin(this));
     m_widgets.append(new FlowTransmitterPlugin(this));
     m_widgets.append(new PumpPlugin(this));
+    m_widgets.append(new AHUFanPlugin(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> WidgetsCollectionPlugin::customWidgets() const
