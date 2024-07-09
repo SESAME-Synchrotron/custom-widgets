@@ -15,6 +15,7 @@ FORMS += \
     widgets/butterfly_valve.ui \
     widgets/flow_transmitter.ui \
     widgets/heat_exchanger.ui \
+    widgets/humidity_transmitter.ui \
     widgets/pressure_transmitter.ui \
     widgets/pump.ui \
     widgets/three_way_valve.ui
@@ -23,6 +24,7 @@ HEADERS += \
     plugins/ahu_fan_plugin.h \
     plugins/flow_transmitter_plugin.h \
     plugins/heat_exchanger_plugin.h \
+    plugins/humidity_transmitter_plugin.h \
     plugins/pump_plugin.h \
     plugins/three_way_valve_plugin.h \
     widgets/ahu_fan.h \
@@ -31,6 +33,7 @@ HEADERS += \
     constants.h \
     widgets/flow_transmitter.h \
     widgets/heat_exchanger.h \
+    widgets/humidity_transmitter.h \
     widgets/pressure_transmitter.h \
     plugins/pressure_transmitter_plugin.h \
     widgets/protected_button.h \
@@ -43,6 +46,7 @@ SOURCES += \
     plugins/ahu_fan_plugin.cpp \
     plugins/flow_transmitter_plugin.cpp \
     plugins/heat_exchanger_plugin.cpp \
+    plugins/humidity_transmitter_plugin.cpp \
     plugins/pump_plugin.cpp \
     plugins/three_way_valve_plugin.cpp \
     widgets/ahu_fan.cpp \
@@ -50,6 +54,7 @@ SOURCES += \
     plugins/butterfly_valve_plugin.cpp \
     widgets/flow_transmitter.cpp \
     widgets/heat_exchanger.cpp \
+    widgets/humidity_transmitter.cpp \
     widgets/pressure_transmitter.cpp \
     plugins/pressure_transmitter_plugin.cpp \
     widgets/protected_button.cpp \
