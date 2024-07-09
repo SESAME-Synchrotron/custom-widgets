@@ -16,13 +16,15 @@ FORMS += \
     widgets/flow_transmitter.ui \
     widgets/heat_exchanger.ui \
     widgets/pressure_transmitter.ui \
-    widgets/pump.ui
+    widgets/pump.ui \
+    widgets/three_way_valve.ui
 
 HEADERS += \
     plugins/ahu_fan_plugin.h \
     plugins/flow_transmitter_plugin.h \
     plugins/heat_exchanger_plugin.h \
     plugins/pump_plugin.h \
+    plugins/three_way_valve_plugin.h \
     widgets/ahu_fan.h \
     widgets/butterfly_valve.h \
     plugins/butterfly_valve_plugin.h \
@@ -34,13 +36,15 @@ HEADERS += \
     widgets/protected_button.h \
     plugins/protected_button_plugin.h \
     plugins/widgets_collection_plugin.h \
-    widgets/pump.h
+    widgets/pump.h \
+    widgets/three_way_valve.h
 
 SOURCES += \
     plugins/ahu_fan_plugin.cpp \
     plugins/flow_transmitter_plugin.cpp \
     plugins/heat_exchanger_plugin.cpp \
     plugins/pump_plugin.cpp \
+    plugins/three_way_valve_plugin.cpp \
     widgets/ahu_fan.cpp \
     widgets/butterfly_valve.cpp \
     plugins/butterfly_valve_plugin.cpp \
@@ -51,7 +55,8 @@ SOURCES += \
     widgets/protected_button.cpp \
     plugins/protected_button_plugin.cpp \
     plugins/widgets_collection_plugin.cpp \
-    widgets/pump.cpp
+    widgets/pump.cpp \
+    widgets/three_way_valve.cpp
 
 headers.path  = $$[QT_INSTALL_HEADERS]/
 headers.files = $$HEADERS
@@ -69,7 +74,8 @@ DEPENDPATH += $$(EPICS_BASE)/include \
               $$(QE_TARGET_DIR)/include \
               $$(EPICS_BASE)/include/os/Linux
 
-INCLUDEPATH += $$(EPICS_BASE)/include \
+INCLUDEPATH += widgets/ plugins/ \
+               $$(EPICS_BASE)/include \
                $$(QWT_ROOT)/include \
                $$(QE_TARGET_DIR)/include \
                $$(EPICS_BASE)/include/os/Linux \

@@ -6,6 +6,7 @@
 #include "plugins/flow_transmitter_plugin.h"
 #include "plugins/pump_plugin.h"
 #include "plugins/ahu_fan_plugin.h"
+#include "three_way_valve_plugin.h"
 
 WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     : QObject(parent)
@@ -17,6 +18,7 @@ WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     m_widgets.append(new FlowTransmitterPlugin(this));
     m_widgets.append(new PumpPlugin(this));
     m_widgets.append(new AHUFanPlugin(this));
+    m_widgets.append(new ThreeWayValvePlugin(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> WidgetsCollectionPlugin::customWidgets() const
