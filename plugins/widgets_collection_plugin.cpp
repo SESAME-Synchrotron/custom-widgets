@@ -8,6 +8,7 @@
 #include "plugins/ahu_fan_plugin.h"
 #include "three_way_valve_plugin.h"
 #include "humidity_transmitter_plugin.h"
+#include "temperature_transmitter_plugin.h"
 
 WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     : QObject(parent)
@@ -21,6 +22,7 @@ WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     m_widgets.append(new AHUFanPlugin(this));
     m_widgets.append(new ThreeWayValvePlugin(this));
     m_widgets.append(new HumidityTransmitterPlugin(this));
+    m_widgets.append(new TemperatureTransmitterPlugin(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> WidgetsCollectionPlugin::customWidgets() const

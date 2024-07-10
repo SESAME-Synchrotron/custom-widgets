@@ -18,6 +18,7 @@ FORMS += \
     widgets/humidity_transmitter.ui \
     widgets/pressure_transmitter.ui \
     widgets/pump.ui \
+    widgets/temperature_transmitter.ui \
     widgets/three_way_valve.ui
 
 HEADERS += \
@@ -26,6 +27,7 @@ HEADERS += \
     plugins/heat_exchanger_plugin.h \
     plugins/humidity_transmitter_plugin.h \
     plugins/pump_plugin.h \
+    plugins/temperature_transmitter_plugin.h \
     plugins/three_way_valve_plugin.h \
     widgets/ahu_fan.h \
     widgets/butterfly_valve.h \
@@ -40,6 +42,7 @@ HEADERS += \
     plugins/protected_button_plugin.h \
     plugins/widgets_collection_plugin.h \
     widgets/pump.h \
+    widgets/temperature_transmitter.h \
     widgets/three_way_valve.h
 
 SOURCES += \
@@ -48,6 +51,7 @@ SOURCES += \
     plugins/heat_exchanger_plugin.cpp \
     plugins/humidity_transmitter_plugin.cpp \
     plugins/pump_plugin.cpp \
+    plugins/temperature_transmitter_plugin.cpp \
     plugins/three_way_valve_plugin.cpp \
     widgets/ahu_fan.cpp \
     widgets/butterfly_valve.cpp \
@@ -61,6 +65,7 @@ SOURCES += \
     plugins/protected_button_plugin.cpp \
     plugins/widgets_collection_plugin.cpp \
     widgets/pump.cpp \
+    widgets/temperature_transmitter.cpp \
     widgets/three_way_valve.cpp
 
 headers.path  = $$[QT_INSTALL_HEADERS]/
