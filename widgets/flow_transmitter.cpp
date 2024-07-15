@@ -1,4 +1,4 @@
-#include "widgets/flow_transmitter.h"
+#include "flow_transmitter.h"
 #include "ui_flow_transmitter.h"
 
 FlowTransmitter::FlowTransmitter(QWidget *parent) :
@@ -8,6 +8,7 @@ FlowTransmitter::FlowTransmitter(QWidget *parent) :
     ui->setupUi(this);
     color = Qt::gray;
     m_threshold = 0;
+    m_rotation = NoRotation;
 }
 
 FlowTransmitter::~FlowTransmitter()
@@ -21,14 +22,16 @@ void FlowTransmitter::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
 
-    int _width = width();
-    int _height = height();
-    int radius = _width / 2;
+    int width = this->width();
+    int height = this->height();
+    int radius = width / 2;
+
+    Q_IMPLEMENT_ROTATION
 
     painter.setBrush(color);
-    painter.drawEllipse(QPoint(radius, 15), 14, 14);
-    painter.drawLine(radius - 12, 10, radius + 12, 10);
-    painter.drawLine(radius, 30, radius, _height);
+    painter.drawEllipse(QPoint(radius, 15), 12, 12);
+    painter.drawLine(radius - 10, 10, radius + 10, 10);
+    painter.drawLine(radius, 27, radius, height);
     update();
 }
 

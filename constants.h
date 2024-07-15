@@ -76,21 +76,9 @@
 
 #define Q_IMPLEMENT_ROTATION \
     int angle = (int) m_rotation; \
-    bool rotated = false; \
-    if (angle != Rotation::NoRotation) { \
-        painter.translate(width / 2, height / 2); \
-        painter.rotate(angle); \
-        painter.translate(-width / 2, -height / 2); \
-        rotated = true; \
-    } \
-    else { \
-        if (rotated) { \
-            painter.translate(width / 2, height / 2); \
-            painter.rotate(-1 * angle); \
-            painter.translate(-width / 2, -height / 2); \
-            rotated = false; \
-        } \
-    } \
+    painter.translate(width / 2, height / 2); \
+    painter.rotate(angle); \
+    painter.translate(-width / 2, -height / 2); \
 
 
 #endif // CONSTANTS_H

@@ -18,6 +18,8 @@ class HumidityTransmitter : public QWidget
     Q_PROPERTY(QString PVName    READ pvName       WRITE setPVName);
     Q_PROPERTY(double  threshold READ getThreshold WRITE setThreshold);
 
+    Q_DECLARE_ROTATION
+
 public:
     explicit HumidityTransmitter(QWidget *parent = nullptr);
     ~HumidityTransmitter();

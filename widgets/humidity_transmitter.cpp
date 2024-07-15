@@ -6,6 +6,8 @@ HumidityTransmitter::HumidityTransmitter(QWidget *parent) :
     ui(new Ui::HumidityTransmitter)
 {
     ui->setupUi(this);
+    color = Qt::gray;
+    m_rotation = NoRotation;
 }
 
 HumidityTransmitter::~HumidityTransmitter()
@@ -17,29 +19,31 @@ void HumidityTransmitter::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 
-    int _width = width();
-    int _height = height();
+    int width = this->width();
+    int height = this->height();
 
     QPainter painter(this);
     QPolygonF p;
 
-    p << QPointF(_width / 2.0 - 6,  0)  <<
-         QPointF(_width / 2.0 + 6,  0)  <<
-         QPointF(_width / 2.0 + 14, 15) <<
-         QPointF(_width / 2.0 + 6,  30) <<
-         QPointF(_width / 2.0 - 6,  30) <<
-         QPointF(_width / 2.0 - 15, 15) <<
-         QPointF(_width / 2.0 - 6,  0);
+    Q_IMPLEMENT_ROTATION
+
+    p << QPointF(width / 2.0 - 4,  0)  <<
+         QPointF(width / 2.0 + 4,  0)  <<
+         QPointF(width / 2.0 + 12, 15) <<
+         QPointF(width / 2.0 + 4,  30) <<
+         QPointF(width / 2.0 - 4,  30) <<
+         QPointF(width / 2.0 - 12, 15) <<
+         QPointF(width / 2.0 - 4,  0);
 
     painter.setBrush(color);
     painter.drawPolygon(p, Qt::OddEvenFill);
 
     painter.setBrush(Qt::NoBrush);
-    painter.drawRect(QRectF(_width / 2 - 1.5, 30, 3, _height - 30 - 1));
-    painter.drawEllipse(QPointF(_width / 2 - 5, 10), 3, 3);
-    painter.drawEllipse(QPointF(_width / 2 + 5, 10), 3, 3);
-    painter.drawEllipse(QPointF(_width / 2 - 5, 20), 3, 3);
-    painter.drawEllipse(QPointF(_width / 2 + 5, 20), 3, 3);
+    painter.drawRect(QRectF(width / 2 - 1.5, 30, 3, height - 30 - 1));
+    painter.drawEllipse(QPointF(width / 2 - 5, 10), 3, 3);
+    painter.drawEllipse(QPointF(width / 2 + 5, 10), 3, 3);
+    painter.drawEllipse(QPointF(width / 2 - 5, 20), 3, 3);
+    painter.drawEllipse(QPointF(width / 2 + 5, 20), 3, 3);
 }
 
 QString HumidityTransmitter::pvName() const
