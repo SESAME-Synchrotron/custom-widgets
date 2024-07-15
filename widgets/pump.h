@@ -17,14 +17,39 @@ class Pump;
 class Pump : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(QString PVName    READ pvName       WRITE setPVName);
+    Q_PROPERTY(QString       PVName   READ pvName        WRITE setPVName);
+    Q_PROPERTY(Rotation      rotation READ rotation      WRITE setRotation);
+    Q_PROPERTY(FlipDirection flip     READ flipDirection WRITE setFlipDirection);
 
 public:
+
+    enum Rotation {
+        NoRotation = 0,
+        Rotate90 = 90,
+        Rotate180 = 180,
+        Rotate270 = 270
+    };
+
+    enum FlipDirection {
+        NoFlip,
+        Horizontal,
+        Vertical
+    };
+
+    Q_ENUM(Rotation);
+    Q_ENUM(FlipDirection);
+
     explicit Pump(QWidget *parent = nullptr);
     ~Pump();
 
     QString pvName() const;
     void setPVName(const QString name);
+
+    Rotation rotation() const;
+    void setRotation(const Rotation angle);
+
+    FlipDirection flipDirection() const;
+    void setFlipDirection(const FlipDirection direction);
 
 public slots:
     void onChanged(const QVariant& value);
@@ -36,8 +61,10 @@ protected:
 private:
     Ui::Pump *ui;
 
-    QColor color;
-    QString m_variableName;
+    QColor   color;
+    QString  m_variableName;
+    Rotation m_rotation;
+    FlipDirection m_flip;
 
     QEpicsPV* pv;
 };

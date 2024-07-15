@@ -21,13 +21,15 @@ void HeatExchanger::paintEvent(QPaintEvent *event)
     int _height = height();
     QPainter painter(this);
 
-    painter.drawRect(0, 0, _width - 1, _height * 0.1);
-    painter.drawLine(0,             _height * 0.1, 0            , _height * 0.9);
+    QPen p(QBrush(Qt::red), 2);
+    painter.setPen(p);
+    painter.drawRect(1, 1, _width - 2, _height * 0.1 - 1);
+    painter.drawLine(1,             _height * 0.1, 1            , _height * 0.9);
     painter.drawLine(_width * 0.25, _height * 0.1, _width * 0.25, _height * 0.9);
     painter.drawLine(_width * 0.50, _height * 0.1, _width * 0.50, _height * 0.9);
     painter.drawLine(_width * 0.75, _height * 0.1, _width * 0.75, _height * 0.9);
     painter.drawLine(_width - 1,    _height * 0.1, _width - 1   , _height * 0.9);
-    painter.drawRect(0, _height * 0.9, _width - 1, _height * 0.1 - 1);
+    painter.drawRect(1, _height * 0.9 + 1, _width - 2, _height * 0.1 - 2);
 }
 
 QString HeatExchanger::pvName() const

@@ -21,11 +21,16 @@ void AHUFan::paintEvent(QPaintEvent *event)
     int _height = height();
     double center = (_width - 30) / 2;
 
+    QPainterPath path;
+    path.arcTo(QRect(0, 0, 2 * center, 2 * center), 30, -300);
 
     QPainter painter(this);
     painter.drawEllipse(QPoint(center, center), (int) center / 2, (int) center / 2);
-    painter.drawEllipse(QPoint(center, center), (int) center - 1, (int) center - 1);
-    painter.drawLine(center, 1, _width - 1, 1);
+
+    // painter.drawEllipse(QPoint(center, center), (int) center - 1, (int) center - 1);
+    painter.drawArc(QRect(0, 0, 2 * center, 2 * center), 30 * 16, -300 * 16);
+
+    painter.drawLine(center, 0, _width - 1, 0);
     painter.drawLine(_width - 1, 1, _width - 1, _height / 4);
     painter.drawLine(_width - 1, _height / 4, (qSqrt(3) * (center) / 2) + center + 1, _height / 4);
 }

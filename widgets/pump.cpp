@@ -7,6 +7,7 @@ Pump::Pump(QWidget *parent) :
 {
     ui->setupUi(this);
     color = Qt::gray;
+    m_rotation = NoRotation;
 }
 
 Pump::~Pump()
@@ -18,13 +19,47 @@ void Pump::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 
+    QTransform t;
     QPainter painter(this);
 
     int _width = width();
     int _height = height();
     int radius = _width / 2;
 
-    double offset = 20;
+    if (m_flip == FlipDirection::Vertical) {
+        t.translate(_width, 0);
+        t.scale(-1, 1);
+        painter.setTransform(t);
+    }
+    else if (m_flip == FlipDirection::Horizontal) {
+        t.translate(0, _height);
+        t.scale(1, -1);
+        painter.setTransform(t);
+    }
+    else {
+        t.scale(1, 1);
+        painter.setTransform(t);
+    }
+
+    int angle = (int) m_rotation;
+    bool rotated = false;
+
+    if (angle != Rotation::NoRotation) {
+        painter.translate(_width / 2, _height / 2);
+        painter.rotate(angle);
+        painter.translate(-_width / 2, -_height / 2);
+        rotated = true;
+    }
+    else {
+        if (rotated) {
+            painter.translate(_width / 2, _height / 2);
+            painter.rotate(-1 * angle);
+            painter.translate(-_width / 2, -_height / 2);
+            rotated = false;
+        }
+    }
+
+    double offset = 15;
     int triangle_size = 4;
     double offset_x1 = radius - offset;
     double offset_x2 = radius + offset;
@@ -34,9 +69,9 @@ void Pump::paintEvent(QPaintEvent *event)
     painter.setBrush(color);
     painter.drawEllipse(QPoint(radius, radius), radius - triangle_size, radius - triangle_size);
 
-    painter.drawLine(offset_x1, offset_y1 - triangle_size, 0, _height);
-    painter.drawLine(offset_x2, offset_y2 - triangle_size, _width, _height);
-    painter.drawLine(0, _height, _width - 1, _height - 1);
+    painter.drawLine(offset_x1, offset_y1 - triangle_size, 5, _height);
+    painter.drawLine(offset_x2, offset_y2 - triangle_size, _width - 5, _height);
+    painter.drawLine(5, _height, _width - 5, _height - 1);
     painter.drawLine(0, radius, radius, radius);
     painter.drawLine(radius, triangle_size, radius * 2, triangle_size);
 
@@ -74,26 +109,26 @@ void Pump::setPVName(const QString name)
 
 void Pump::onChanged(const QVariant &value)
 {
-//    int state = value.toInt();
-//    switch (state) {
-//    case STATE_OFF:
-//        color = Qt::yellow;
-//        break;
+    int state = value.toInt();
+    switch (state) {
+    case STATE_OFF:
+        color = Qt::yellow;
+        break;
 
-//    case STATE_ON:
-//        color = Qt::green;
-//        break;
+    case STATE_ON:
+        color = Qt::green;
+        break;
 
-//    case STATE_FAULT:
-//        color = Qt::red;
-//        break;
+    case STATE_FAULT:
+        color = Qt::red;
+        break;
 
-//    default:
-//        color = Qt::gray;
-//        break;
-//    }
+    default:
+        color = Qt::gray;
+        break;
+    }
 
-//    update();
+    update();
     setToolTip(pvName() + " - " + QString::number(value.toDouble()));
 }
 
@@ -102,4 +137,26 @@ void Pump::onConnectionChanged(bool state)
     if (!state)
         color = Qt::gray;
     update();
+}
+
+void Pump::setRotation(const Rotation angle)
+{
+    m_rotation = angle;
+    update();
+}
+
+Pump::Rotation Pump::rotation() const
+{
+    return m_rotation;
+}
+
+void Pump::setFlipDirection(const FlipDirection direction)
+{
+    m_flip = direction;
+    update();
+}
+
+Pump::FlipDirection Pump::flipDirection() const
+{
+    return m_flip;
 }

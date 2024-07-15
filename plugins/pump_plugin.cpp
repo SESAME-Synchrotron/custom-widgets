@@ -66,8 +66,8 @@ QString PumpPlugin::domXml() const
                   <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>70</width>
-                    <height>80</height>
+                    <width>50</width>
+                    <height>50</height>
                   </rect>
                 </property>
               </widget>
