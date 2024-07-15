@@ -7,7 +7,9 @@ ButterflyValve::ButterflyValve(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->pv = nullptr;
     color = Qt::green;
+    m_rotation = NoRotation;
 }
 
 ButterflyValve::~ButterflyValve()
@@ -20,10 +22,44 @@ void ButterflyValve::paintEvent(QPaintEvent *event)
     Q_UNUSED(event);
 
     QPolygon p;
+    QTransform t;
     QPainter painter(this);
 
     m_width = width();
     m_height = height();
+
+    if (m_flip == FlipDirection::Vertical) {
+        t.translate(m_width, 0);
+        t.scale(-1, 1);
+        painter.setTransform(t);
+    }
+    else if (m_flip == FlipDirection::Horizontal) {
+        t.translate(0, m_height);
+        t.scale(1, -1);
+        painter.setTransform(t);
+    }
+    else {
+        t.scale(1, 1);
+        painter.setTransform(t);
+    }
+
+    int angle = (int) m_rotation;
+    bool rotated = false;
+
+    if (angle != Rotation::NoRotation) {
+        painter.translate(m_width / 2, m_height / 2);
+        painter.rotate(angle);
+        painter.translate(-m_width / 2, -m_height / 2);
+        rotated = true;
+    }
+    else {
+        if (rotated) {
+            painter.translate(m_width / 2, m_height / 2);
+            painter.rotate(-1 * angle);
+            painter.translate(-m_width / 2, -m_height / 2);
+            rotated = false;
+        }
+    }
 
     p << QPoint(0, m_height / 2) <<
          QPoint(0, m_height - 1) <<
@@ -44,7 +80,7 @@ QString ButterflyValve::pvName() const
 void ButterflyValve::setPVName(const QString name)
 {
     this->m_variableName = name;
-    if (!this->pv) {
+    if (this->pv) {
         QObject::disconnect(this->pv, &QEpicsPV::valueChanged, this, &ButterflyValve::onChanged);
         QObject::disconnect(this->pv, &QEpicsPV::connectionChanged, this, &ButterflyValve::onConnectionChanged);
     }
@@ -83,4 +119,27 @@ void ButterflyValve::onChanged(const QVariant &value)
 
     update();
     setToolTip(pvName() + " - " + QString::number(value.toDouble()));
+}
+
+
+void ButterflyValve::setRotation(const Rotation angle)
+{
+    m_rotation = angle;
+    update();
+}
+
+ButterflyValve::Rotation ButterflyValve::rotation() const
+{
+    return m_rotation;
+}
+
+void ButterflyValve::setFlipDirection(const FlipDirection direction)
+{
+    m_flip = direction;
+    update();
+}
+
+ButterflyValve::FlipDirection ButterflyValve::flipDirection() const
+{
+    return m_flip;
 }
