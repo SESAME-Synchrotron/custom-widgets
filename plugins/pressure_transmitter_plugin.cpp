@@ -66,7 +66,7 @@ QString PressureTransmitterPlugin::domXml() const
                   <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>30</width>
+                    <width>60</width>
                     <height>60</height>
                   </rect>
                 </property>

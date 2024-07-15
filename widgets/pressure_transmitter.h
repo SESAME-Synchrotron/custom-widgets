@@ -19,6 +19,9 @@ class PressureTransmitter : public QWidget
     Q_PROPERTY(QString PVName    READ pvName       WRITE setPVName);
     Q_PROPERTY(double  threshold READ getThreshold WRITE setThreshold);
 
+    Q_DECLARE_ROTATION
+    Q_DECLARE_FLIP
+
 public:
     explicit PressureTransmitter(QWidget *parent = nullptr);
     ~PressureTransmitter();

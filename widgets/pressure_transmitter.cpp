@@ -8,6 +8,8 @@ PressureTransmitter::PressureTransmitter(QWidget *parent) :
     ui->setupUi(this);
     color = Qt::gray;
     m_threshold = 0;
+    pv = nullptr;
+    m_rotation = Rotation::NoRotation;
 }
 
 PressureTransmitter::~PressureTransmitter()
@@ -21,15 +23,18 @@ void PressureTransmitter::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
 
-    int _width = width();
-    int _height = height();
-    int radius = _width / 2;
+    int width = this->width();
+    int height = this->height();
+    int radius = 15;
+
+    Q_IMPLEMENT_FLIP
+    Q_IMPLEMENT_ROTATION
 
     painter.setBrush(color);
-    painter.drawEllipse(QPoint(radius, 15), 14, 14);
-    painter.drawLine(radius - 10, 5, radius + 10, 25);
-    painter.drawLine(radius - 10, 25, radius + 10, 5);
-    painter.drawLine(radius, 30, radius, _height);
+    painter.drawEllipse(QPoint(width / 2, 15), radius - 1, radius - 1);
+    painter.drawLine(width / 2 - 10, 5, width / 2 + 10, 25);
+    painter.drawLine(width / 2 - 10, 25, width / 2 + 10, 5);
+    painter.drawLine(width / 2, 30, width / 2, width);
     update();
 }
 
@@ -47,7 +52,7 @@ void PressureTransmitter::setPVName(const QString name)
 {
     this->m_variableName = name;
 
-     if (!this->pv) {
+     if (this->pv) {
          QObject::disconnect(this->pv, &QEpicsPV::valueChanged, this, &PressureTransmitter::onChanged);
          QObject::disconnect(this->pv, &QEpicsPV::connectionChanged, this, &PressureTransmitter::onConnectionChanged);
      }
