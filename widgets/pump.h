@@ -5,6 +5,7 @@
 #include <QPaintEvent>
 #include <QPainter>
 #include <QtMath>
+#include <QTimer>
 
 #include <qepicspv.h>
 
@@ -61,8 +62,11 @@ protected:
 private:
     Ui::Pump *ui;
 
+    double   m_rotationAngle;
     QColor   color;
     QString  m_variableName;
+    QTimer*  m_timer;
+
     Rotation m_rotation;
     FlipDirection m_flip;
 
