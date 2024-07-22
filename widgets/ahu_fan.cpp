@@ -6,6 +6,9 @@ AHUFan::AHUFan(QWidget *parent) :
     ui(new Ui::AHUFan)
 {
     ui->setupUi(this);
+    color = Qt::gray;
+
+    pv = nullptr;
 }
 
 AHUFan::~AHUFan()
@@ -25,10 +28,12 @@ void AHUFan::paintEvent(QPaintEvent *event)
     path.arcTo(QRect(0, 0, 2 * center, 2 * center), 30, -300);
 
     QPainter painter(this);
-    painter.drawEllipse(QPoint(center, center), (int) center / 2, (int) center / 2);
+    painter.setBrush(color);
 
-    // painter.drawEllipse(QPoint(center, center), (int) center - 1, (int) center - 1);
-    painter.drawArc(QRect(0, 0, 2 * center, 2 * center), 30 * 16, -300 * 16);
+    painter.drawEllipse(QPoint(center, center), (int) center - 1, (int) center - 1);
+    // painter.drawArc(QRect(0, 0, 2 * center, 2 * center), 30 * 16, -300 * 16);
+
+    painter.drawEllipse(QPoint(center, center), (int) center / 2, (int) center / 2);
 
     painter.drawLine(center, 0, _width - 1, 0);
     painter.drawLine(_width - 1, 1, _width - 1, _height / 4);
@@ -43,7 +48,7 @@ QString AHUFan::pvName() const
 void AHUFan::setPVName(const QString name)
 {
     this->m_variableName = name;
-    if (!this->pv) {
+    if (this->pv) {
         QObject::disconnect(this->pv, &QEpicsPV::valueChanged, this, &AHUFan::onChanged);
         QObject::disconnect(this->pv, &QEpicsPV::connectionChanged, this, &AHUFan::onConnectionChanged);
     }
