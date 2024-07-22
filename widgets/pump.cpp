@@ -29,17 +29,11 @@ void Pump::paintEvent(QPaintEvent *event)
 
     QTransform t;
     QPainter painter(this);
+    QBrush currentBrush = painter.brush();
 
     int width = this->width();
     int height = this->height();
     int radius = width / 2;
-
-    QBrush currentBrush = painter.brush();
-    QLinearGradient gradient(0, 0, 0, height);
-    gradient.setColorAt(0, color);
-    gradient.setColorAt(0.5, Qt::white);
-    gradient.setColorAt(1, color);
-
     if (m_flip == FlipDirection::Vertical) {
         t.translate(width, 0);
         t.scale(-1, 1);
@@ -80,7 +74,7 @@ void Pump::paintEvent(QPaintEvent *event)
     double offset_y1 = qSqrt(2 * radius * offset_x1 - qPow(offset_x1, 2)) + radius;
     double offset_y2 = qSqrt(2 * radius * offset_x2 - qPow(offset_x2, 2)) + radius;
 
-    painter.setBrush(gradient);
+    painter.setBrush(QBrush(color));
     painter.drawEllipse(QPoint(radius, radius), radius - triangle_size, radius - triangle_size);
     painter.setBrush(currentBrush);
 
@@ -105,9 +99,9 @@ void Pump::paintEvent(QPaintEvent *event)
 
     painter.translate(width / 2, height / 2);
     painter.setPen(QPen(Qt::black, 1.5));
-    painter.drawLine(0, 0, std::cos(m_rotationAngle) * (radius - triangle_size), std::sin(m_rotationAngle) * (radius - triangle_size));
-    painter.drawLine(0, 0, std::cos(m_rotationAngle + 2*M_PI/3) * (radius - triangle_size), std::sin(m_rotationAngle + 2*M_PI/3) * (radius - triangle_size));
-    painter.drawLine(0, 0, std::cos(m_rotationAngle + 4*M_PI/3) * (radius - triangle_size), std::sin(m_rotationAngle + 4*M_PI/3) * (radius - triangle_size));
+    painter.drawLine(0, 0, std::cos(m_rotationAngle) * (radius - 2 * triangle_size), std::sin(m_rotationAngle) * (radius - 2 * triangle_size));
+    painter.drawLine(0, 0, std::cos(m_rotationAngle + 2*M_PI/3) * (radius - 2 * triangle_size), std::sin(m_rotationAngle + 2*M_PI/3) * (radius - 2 * triangle_size));
+    painter.drawLine(0, 0, std::cos(m_rotationAngle + 4*M_PI/3) * (radius - 2 * triangle_size), std::sin(m_rotationAngle + 4*M_PI/3) * (radius - 2 * triangle_size));
     painter.translate(-width / 2, -height / 2);
 }
 
@@ -134,17 +128,17 @@ void Pump::onChanged(const QVariant &value)
     int state = value.toInt();
     switch (state) {
     case STATE_OFF:
-        color = Qt::darkYellow;
+        color = Qt::yellow;
         m_timer->stop();
         break;
 
     case STATE_ON:
-        color = Qt::darkGreen;
+        color = Qt::green;
         m_timer->start();
         break;
 
     case STATE_FAULT:
-        color = Qt::darkRed;
+        color = Qt::red;
         m_timer->stop();
         break;
 
