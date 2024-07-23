@@ -14,6 +14,7 @@ FORMS += \
     widgets/ahu_fan.ui \
     widgets/butterfly_valve.ui \
     widgets/chiller.ui \
+    widgets/damper.ui \
     widgets/flow_transmitter.ui \
     widgets/heat_exchanger.ui \
     widgets/humidity_transmitter.ui \
@@ -25,6 +26,7 @@ FORMS += \
 HEADERS += \
     plugins/ahu_fan_plugin.h \
     plugins/chiller_plugin.h \
+    plugins/damper_plugin.h \
     plugins/flow_transmitter_plugin.h \
     plugins/heat_exchanger_plugin.h \
     plugins/humidity_transmitter_plugin.h \
@@ -36,6 +38,7 @@ HEADERS += \
     plugins/butterfly_valve_plugin.h \
     constants.h \
     widgets/chiller.h \
+    widgets/damper.h \
     widgets/flow_transmitter.h \
     widgets/heat_exchanger.h \
     widgets/humidity_transmitter.h \
@@ -51,6 +54,7 @@ HEADERS += \
 SOURCES += \
     plugins/ahu_fan_plugin.cpp \
     plugins/chiller_plugin.cpp \
+    plugins/damper_plugin.cpp \
     plugins/flow_transmitter_plugin.cpp \
     plugins/heat_exchanger_plugin.cpp \
     plugins/humidity_transmitter_plugin.cpp \
@@ -61,6 +65,7 @@ SOURCES += \
     widgets/butterfly_valve.cpp \
     plugins/butterfly_valve_plugin.cpp \
     widgets/chiller.cpp \
+    widgets/damper.cpp \
     widgets/flow_transmitter.cpp \
     widgets/heat_exchanger.cpp \
     widgets/humidity_transmitter.cpp \
