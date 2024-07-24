@@ -19,6 +19,7 @@ class AHUFan : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(QString PVName    READ pvName       WRITE setPVName);
+    Q_PROPERTY(bool    flipped READ isFlipped WRITE setFlipped);
 
 public:
     explicit AHUFan(QWidget *parent = nullptr);
@@ -26,6 +27,8 @@ public:
 
     QString pvName() const;
     void setPVName(const QString name);
+    bool isFlipped() const;
+    void setFlipped(const bool direction);
 
 public slots:
     void onChanged(const QVariant& value);
@@ -39,6 +42,7 @@ private:
 
     QColor color;
     QString m_variableName;
+    bool    m_flipped;
 
     QEpicsPV* pv;
 };

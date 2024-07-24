@@ -65,7 +65,7 @@ QString AHUFanPlugin::domXml() const
                   <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>110</width>
+                    <width>100</width>
                     <height>80</height>
                   </rect>
                 </property>
