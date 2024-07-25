@@ -76,5 +76,5 @@ QString DamperPlugin::domXml() const
 
 QString DamperPlugin::includeFile() const
 {
-    return QLatin1String("ahu_fan.h");
+    return QLatin1String("damper.h");
 }

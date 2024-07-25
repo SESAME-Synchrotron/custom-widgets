@@ -20,13 +20,24 @@ void Damper::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
 
-    QTransform t;
     QPainter painter(this);
     QBrush currentBrush = painter.brush();
 
     int width = this->width();
     int height = this->height();
 
+    if (m_layout == Layout::Horizontal) {
+        painter.translate(width / 2, height / 2);
+        painter.rotate(90);
+        painter.translate(-width / 2, -height / 2);
+    }
+    else {
+        painter.translate(width / 2, height / 2);
+        painter.rotate(0);
+        painter.translate(-width / 2, -height / 2);
+    }
+
+    painter.setBrush(color);
     painter.drawRect(width / 2 - 20, 0, 40, 5);
     painter.drawRect(width / 2 - 20, height - 6, 40, 5);
     painter.drawRect(width / 2 - 10, 5, 20, height - 11);
@@ -96,4 +107,5 @@ Damper::Layout Damper::layout() const
 void Damper::setLayout(const Layout direction)
 {
     m_layout = direction;
+    update();
 }
