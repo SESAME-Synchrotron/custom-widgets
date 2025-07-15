@@ -39,7 +39,7 @@ QString ButterflyValvePlugin::group() const
 
 QIcon ButterflyValvePlugin::icon() const
 {
-    return QIcon();
+    return QIcon(":/icons/butterfly_valve.png");
 }
 
 QString ButterflyValvePlugin::toolTip() const

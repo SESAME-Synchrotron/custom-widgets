@@ -59,7 +59,7 @@ bool AHUFanPlugin::isContainer() const
 QString AHUFanPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="AHU Fan">
               <widget class="AHUFan" name="ahuFan">
                 <property name="geometry">
                   <rect>

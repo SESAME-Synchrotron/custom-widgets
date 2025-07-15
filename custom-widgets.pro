@@ -100,3 +100,9 @@ INCLUDEPATH += widgets/ plugins/ \
                $$(QE_TARGET_DIR)/include \
                $$(EPICS_BASE)/include/os/Linux \
                $$(EPICS_BASE)/include/compiler/gcc
+
+# DISTFILES += \
+#    icons/butterfly_valve.png
+
+RESOURCES += \
+   resources.qrc
