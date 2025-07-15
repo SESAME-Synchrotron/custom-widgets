@@ -60,7 +60,7 @@ bool ThreeWayValvePlugin::isContainer() const
 QString ThreeWayValvePlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Three-Way Valve">
               <widget class="ThreeWayValve" name="threeWayValve">
                 <property name="geometry">
                   <rect>

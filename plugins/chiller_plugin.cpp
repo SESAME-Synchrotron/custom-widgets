@@ -61,7 +61,7 @@ bool ChillerPlugin::isContainer() const
 QString ChillerPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Chiller">
               <widget class="Chiller" name="chiller">
                 <property name="geometry">
                   <rect>

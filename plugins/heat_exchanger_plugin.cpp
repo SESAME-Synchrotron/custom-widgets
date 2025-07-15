@@ -60,7 +60,7 @@ bool HeatExchangerPlugin::isContainer() const
 QString HeatExchangerPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Heat Exchanger">
               <widget class="HeatExchanger" name="heatExchanger">
                 <property name="geometry">
                   <rect>

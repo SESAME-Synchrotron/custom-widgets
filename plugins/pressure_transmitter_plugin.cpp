@@ -60,7 +60,7 @@ bool PressureTransmitterPlugin::isContainer() const
 QString PressureTransmitterPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Pressure Transmitter">
               <widget class="PressureTransmitter" name="pressureTransmitter">
                 <property name="geometry">
                   <rect>

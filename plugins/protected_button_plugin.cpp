@@ -60,7 +60,7 @@ bool QEProtectedButtonPlugin::isContainer() const
 QString QEProtectedButtonPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Protected Button">
               <widget class="QEProtectedButton" name="protectedButton">
                 <property name="geometry">
                   <rect>

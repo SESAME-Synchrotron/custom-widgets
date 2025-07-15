@@ -60,7 +60,7 @@ bool TemperatureTransmitterPlugin::isContainer() const
 QString TemperatureTransmitterPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Temperature Transmitter">
               <widget class="TemperatureTransmitter" name="temperatureTransmitter">
                 <property name="geometry">
                   <rect>

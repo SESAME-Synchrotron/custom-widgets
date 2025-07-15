@@ -60,7 +60,7 @@ bool FlowTransmitterPlugin::isContainer() const
 QString FlowTransmitterPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Flow Transmitter">
               <widget class="FlowTransmitter" name="flowTransmitter">
                 <property name="geometry">
                   <rect>

@@ -60,7 +60,7 @@ bool ButterflyValvePlugin::isContainer() const
 QString ButterflyValvePlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Butterfly Valve">
               <widget class="ButterflyValve" name="butterflyValvePlugin">
                 <property name="geometry">
                   <rect>

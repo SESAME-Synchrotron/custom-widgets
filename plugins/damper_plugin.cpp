@@ -59,7 +59,7 @@ bool DamperPlugin::isContainer() const
 QString DamperPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Damper">
               <widget class="Damper" name="damper">
                 <property name="geometry">
                   <rect>

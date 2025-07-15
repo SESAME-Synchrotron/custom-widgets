@@ -60,7 +60,7 @@ bool HumidityTransmitterPlugin::isContainer() const
 QString HumidityTransmitterPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Humidity Transmitter">
               <widget class="HumidityTransmitter" name="humidityTransmitter">
                 <property name="geometry">
                   <rect>

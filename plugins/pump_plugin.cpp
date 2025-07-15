@@ -60,7 +60,7 @@ bool PumpPlugin::isContainer() const
 QString PumpPlugin::domXml() const
 {
     return R"(
-            <ui language="c++">
+            <ui language="c++" displayname="Pump">
               <widget class="Pump" name="pump">
                 <property name="geometry">
                   <rect>
