@@ -1,10 +1,12 @@
 #include "widgets/protected_button.h"
 
 QEProtectedButton::QEProtectedButton(QWidget *parent) :
-    QEPushButton(parent)
+    QPushButton(parent)
 {
-    m_machineStatus = new QEpicsPV("Test:PV");
-    QObject::connect(m_machineStatus, SIGNAL(valueChanged(QVariant)), this, SLOT(onMachineStatusChanged(QVariant)));
+    if (!m_variableName.isEmpty()) {
+        m_protectionPV = new QEpicsPV(m_variableName);
+        QObject::connect(m_protectionPV, SIGNAL(valueChanged(QVariant)), this, SLOT(onProtectionPVChanged(QVariant)));
+    }
     QObject::connect(this, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
 
     m_values.push_back(3);
@@ -12,14 +14,15 @@ QEProtectedButton::QEProtectedButton(QWidget *parent) :
     m_values.push_back(7);
 
     this->setStyleSheet("background-color: #eed5b7");
+    this->setText("Protected Button");
 }
 
 void QEProtectedButton::paintEvent(QPaintEvent *event)
 {
-    QEPushButton::paintEvent(event);
+    QPushButton::paintEvent(event);
 }
 
-void QEProtectedButton::onMachineStatusChanged(QVariant &value)
+void QEProtectedButton::onProtectionPVChanged(QVariant &value)
 {
     int status = value.toInt();
     if (std::find(m_values.begin(), m_values.end(), status) != m_values.end()) {
@@ -33,5 +36,11 @@ void QEProtectedButton::onMachineStatusChanged(QVariant &value)
 
 void QEProtectedButton::onButtonClicked()
 {
-    QMessageBox::information(this, "Warning", "You are about to execute an action that might affect machine operation, BE CAREFUL!", QMessageBox::Ok);
+    QMessageBox::StandardButton button = QMessageBox::warning(this,
+                                                              "Warning", "You are about to execute an action that might affect machine operation, BE CAREFUL!",
+                                                              QMessageBox::Ok | QMessageBox::Abort);
+    if (button != QMessageBox::Ok)
+        return;
+
+    emit protectionClicked();
 }
