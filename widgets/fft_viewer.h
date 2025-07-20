@@ -63,14 +63,12 @@ private:
     QValueAxis* xAxis;
     QValueAxis* yAxis;
 
-    // QVector<QLineSeries*> series;
     std::array<QLineSeries*, MAX_SOURCES> series;
-
-    // QVector<std::array<double, 200>> rawData;
     std::array<double, 200> rawData[MAX_SOURCES];
+    std::array<chid, 6> ids;
 
     QStringList   pvs;
-    QVector<chid> ids;
+
     int points;
     QString text;
 

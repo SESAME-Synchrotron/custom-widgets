@@ -36,17 +36,10 @@ QEFastFourierTransform::QEFastFourierTransform(QWidget *parent) :
     timer->setInterval(1000);
     timer->start();
 
-    ids.reserve(MAX_SOURCES);
-
-//    modifySeries(0);
-//    modifySeries(1);
-//    modifySeries(2);
-//    modifySeries(3);
-
-    QObject::connect(this, &QEFastFourierTransform::dataSourceAChanged, this, [this](QString name) { modifySeries(0); });
-    QObject::connect(this, &QEFastFourierTransform::dataSourceBChanged, this, [this](QString name) { modifySeries(1); });
-    QObject::connect(this, &QEFastFourierTransform::dataSourceCChanged, this, [this](QString name) { modifySeries(2); });
-    QObject::connect(this, &QEFastFourierTransform::dataSourceDChanged, this, [this](QString name) { modifySeries(3); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceAChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(0); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceBChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(1); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceCChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(2); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceDChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(3); });
 }
 
 QEFastFourierTransform::~QEFastFourierTransform()
