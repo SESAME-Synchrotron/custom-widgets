@@ -11,6 +11,7 @@
 #include "temperature_transmitter_plugin.h"
 #include "chiller_plugin.h"
 #include "damper_plugin.h"
+#include "plugins/fft_viewer_plugin.h"
 
 WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     : QObject(parent)
@@ -27,6 +28,7 @@ WidgetsCollectionPlugin::WidgetsCollectionPlugin(QObject *parent)
     m_widgets.append(new TemperatureTransmitterPlugin(this));
     m_widgets.append(new ChillerPlugin(this));
     m_widgets.append(new DamperPlugin(this));
+    m_widgets.append(new QEFastFourierTransformPlugin(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> WidgetsCollectionPlugin::customWidgets() const

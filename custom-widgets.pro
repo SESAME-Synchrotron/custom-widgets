@@ -1,9 +1,9 @@
 TEMPLATE  = lib
 CONFIG   += plugin
-QT       += designer widgets uiplugin
+QT       += designer widgets uiplugin charts
 TARGET    = customwidgets
 
-DESTDIR          = build-
+DESTDIR          = build-dir
 OBJECTS_DIR      = $$DESTDIR
 MOC_DIR          = $$DESTDIR
 RCC_DIR          = $$DESTDIR
@@ -15,6 +15,7 @@ FORMS += \
     widgets/butterfly_valve.ui \
     widgets/chiller.ui \
     widgets/damper.ui \
+    widgets/fft_viewer.ui \
     widgets/flow_transmitter.ui \
     widgets/heat_exchanger.ui \
     widgets/humidity_transmitter.ui \
@@ -27,6 +28,7 @@ HEADERS += \
     plugins/ahu_fan_plugin.h \
     plugins/chiller_plugin.h \
     plugins/damper_plugin.h \
+    plugins/fft_viewer_plugin.h \
     plugins/flow_transmitter_plugin.h \
     plugins/heat_exchanger_plugin.h \
     plugins/humidity_transmitter_plugin.h \
@@ -39,6 +41,7 @@ HEADERS += \
     constants.h \
     widgets/chiller.h \
     widgets/damper.h \
+    widgets/fft_viewer.h \
     widgets/flow_transmitter.h \
     widgets/heat_exchanger.h \
     widgets/humidity_transmitter.h \
@@ -55,6 +58,7 @@ SOURCES += \
     plugins/ahu_fan_plugin.cpp \
     plugins/chiller_plugin.cpp \
     plugins/damper_plugin.cpp \
+    plugins/fft_viewer_plugin.cpp \
     plugins/flow_transmitter_plugin.cpp \
     plugins/heat_exchanger_plugin.cpp \
     plugins/humidity_transmitter_plugin.cpp \
@@ -66,6 +70,7 @@ SOURCES += \
     plugins/butterfly_valve_plugin.cpp \
     widgets/chiller.cpp \
     widgets/damper.cpp \
+    widgets/fft_viewer.cpp \
     widgets/flow_transmitter.cpp \
     widgets/heat_exchanger.cpp \
     widgets/humidity_transmitter.cpp \
@@ -87,7 +92,7 @@ unix:!macx: LIBS += -L$$(QE_TARGET_DIR)/lib/linux-x86_64/ -lQEFramework \
                     -L$$(QE_TARGET_DIR)/lib/linux-x86_64/designer -lQEPlugin \
                     -L$$(QWT_ROOT)/lib/ -lqwt \
                     -L$$(EPICS_BASE)/lib/linux-x86_64/ -lca \
-                    -L$$(EPICS_BASE)/lib/linux-x86_64/ -lCom
+                    -L$$(EPICS_BASE)/lib/linux-x86_64/ -lCom \
 
 DEPENDPATH += $$(EPICS_BASE)/include \
               $$(QWT_ROOT)/include \
@@ -100,9 +105,6 @@ INCLUDEPATH += widgets/ plugins/ \
                $$(QE_TARGET_DIR)/include \
                $$(EPICS_BASE)/include/os/Linux \
                $$(EPICS_BASE)/include/compiler/gcc
-
-# DISTFILES += \
-#    icons/butterfly_valve.png
 
 RESOURCES += \
    resources.qrc
