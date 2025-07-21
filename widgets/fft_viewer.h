@@ -28,6 +28,8 @@ class QEFastFourierTransform : public QWidget
     Q_PROPERTY(QString dataSourceTitleB READ dataSourceTitleB WRITE setDataSourceTitleB NOTIFY dataSourceTitleBChanged)
     Q_PROPERTY(QString dataSourceTitleC READ dataSourceTitleC WRITE setDataSourceTitleC NOTIFY dataSourceTitleCChanged)
     Q_PROPERTY(QString dataSourceTitleD READ dataSourceTitleD WRITE setDataSourceTitleD NOTIFY dataSourceTitleDChanged)
+    Q_PROPERTY(QString titleX READ getTitleX WRITE setTitleX NOTIFY titleXChanged)
+    Q_PROPERTY(QString titleY READ getTitleY WRITE setTitleY NOTIFY titleYChanged)
 
 public:
     explicit QEFastFourierTransform(QWidget *parent = nullptr);
@@ -57,6 +59,12 @@ public:
     void setDataSourceTitleC(QString name);
     void setDataSourceTitleD(QString name);
 
+    QString getTitleX();
+    void setTitleX(QString name);
+
+    QString getTitleY();
+    void setTitleY(QString name);
+
     void calculateFFT();
 
 signals:
@@ -69,6 +77,8 @@ signals:
     void dataSourceTitleBChanged(QString& name);
     void dataSourceTitleCChanged(QString& name);
     void dataSourceTitleDChanged(QString& name);
+    void titleXChanged(QString& name);
+    void titleYChanged(QString& name);
 
 private:
     Ui::QEFastFourierTransform *ui;
@@ -89,6 +99,9 @@ private:
     int points;
     QString text;
     QStringList titles;
+    QString titleX;
+    QString titleY;
+
 
     QPen colors[MAX_SOURCES] = {QPen(Qt::red), QPen(Qt::blue), QPen(Qt::green), QPen(Qt::yellow)};
 };

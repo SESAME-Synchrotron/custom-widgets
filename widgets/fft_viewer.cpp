@@ -45,6 +45,9 @@ QEFastFourierTransform::QEFastFourierTransform(QWidget *parent) :
     QObject::connect(this, &QEFastFourierTransform::dataSourceTitleBChanged, this, [this](QString name) { series[1]->setName(name); });
     QObject::connect(this, &QEFastFourierTransform::dataSourceTitleCChanged, this, [this](QString name) { series[2]->setName(name); });
     QObject::connect(this, &QEFastFourierTransform::dataSourceTitleDChanged, this, [this](QString name) { series[3]->setName(name); });
+
+    QObject::connect(this, &QEFastFourierTransform::titleXChanged, this, [this](QString name) { this->xAxis->setTitleText(name); });
+    QObject::connect(this, &QEFastFourierTransform::titleYChanged, this, [this](QString name) { this->yAxis->setTitleText(name); });
 }
 
 QEFastFourierTransform::~QEFastFourierTransform()
@@ -234,4 +237,26 @@ void QEFastFourierTransform::setDataSourceTitleD(QString name)
 {
     titles[3] = name;
     emit dataSourceTitleDChanged(name);
+}
+
+QString QEFastFourierTransform::getTitleX()
+{
+    return titleX;
+}
+
+void QEFastFourierTransform::setTitleX(QString name)
+{
+    titleX = name;
+    emit titleXChanged(name);
+}
+
+QString QEFastFourierTransform::getTitleY()
+{
+    return titleY;
+}
+
+void QEFastFourierTransform::setTitleY(QString name)
+{
+    titleY = name;
+    emit titleYChanged(name);
 }
