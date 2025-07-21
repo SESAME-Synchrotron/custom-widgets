@@ -30,6 +30,7 @@ class QEFastFourierTransform : public QWidget
     Q_PROPERTY(QString dataSourceTitleD READ dataSourceTitleD WRITE setDataSourceTitleD NOTIFY dataSourceTitleDChanged)
     Q_PROPERTY(QString titleX READ getTitleX WRITE setTitleX NOTIFY titleXChanged)
     Q_PROPERTY(QString titleY READ getTitleY WRITE setTitleY NOTIFY titleYChanged)
+    Q_PROPERTY(bool enable READ isEnabled WRITE setEnable NOTIFY enableChanged)
 
 public:
     explicit QEFastFourierTransform(QWidget *parent = nullptr);
@@ -65,6 +66,9 @@ public:
     QString getTitleY();
     void setTitleY(QString name);
 
+    bool isEnabled();
+    void setEnable(bool state);
+
     void calculateFFT();
 
 signals:
@@ -79,6 +83,7 @@ signals:
     void dataSourceTitleDChanged(QString& name);
     void titleXChanged(QString& name);
     void titleYChanged(QString& name);
+    void enableChanged(bool& state);
 
 private:
     Ui::QEFastFourierTransform *ui;
@@ -101,7 +106,7 @@ private:
     QStringList titles;
     QString titleX;
     QString titleY;
-
+    bool m_enable;
 
     QPen colors[MAX_SOURCES] = {QPen(Qt::red), QPen(Qt::blue), QPen(Qt::green), QPen(Qt::yellow)};
 };

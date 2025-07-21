@@ -10,7 +10,9 @@ QEFastFourierTransform::QEFastFourierTransform(QWidget *parent) :
     for (int i = 0; i < MAX_SOURCES; ++i) {
         pvs.push_back("");
         titles.push_back("");
+        series[i] = new QLineSeries(this);
     }
+    m_enable = false;
 
     this->xAxis = new QValueAxis;
     this->xAxis->setTitleText("Frequencies");
@@ -126,16 +128,21 @@ void QEFastFourierTransform::modifySeries(int index)
     QLineSeries* s = new QLineSeries(this);
     s->setName(pvs[index]);
     s->setPen(colors[index]);
+    if (chart->series().contains(series[index])) {
+        chart->removeSeries(series[index]);
+        series[index]->detachAxis(xAxis);
+        series[index]->detachAxis(yAxis);
+    }
+
     chart->addSeries(s);
     s->attachAxis(xAxis);
     s->attachAxis(yAxis);
-
     series[index] = s;
 }
 
 void QEFastFourierTransform::calculateFFT()
 {
-    if (points <= 0)
+    if (!m_enable)
         return;
 
     int index = 0;
@@ -259,4 +266,15 @@ void QEFastFourierTransform::setTitleY(QString name)
 {
     titleY = name;
     emit titleYChanged(name);
+}
+
+bool QEFastFourierTransform::isEnabled()
+{
+    return m_enable;
+}
+
+void QEFastFourierTransform::setEnable(bool state)
+{
+    m_enable = state;
+    emit enableChanged(state);
 }
