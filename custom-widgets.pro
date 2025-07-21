@@ -9,7 +9,6 @@ MOC_DIR          = $$DESTDIR
 RCC_DIR          = $$DESTDIR
 UI_DIR           = $$DESTDIR
 QMAKE_DISTCLEAN += -r $$DESTDIR
-LIBS            += -lopencv_core
 
 FORMS += \
     widgets/ahu_fan.ui \
@@ -84,16 +83,21 @@ SOURCES += \
     widgets/temperature_transmitter.cpp \
     widgets/three_way_valve.cpp
 
-headers.path  = $$[QT_INSTALL_HEADERS]/
-headers.files = $$HEADERS
-target.path   = $$[QT_INSTALL_PLUGINS]/designer
-INSTALLS     += headers target
+headers.path      = $$[QT_INSTALL_HEADERS]/
+headers.files     = $$HEADERS
+target.path       = $$[QT_INSTALL_PLUGINS]/designer
+uninstall.target  = uninstall
+distclean.depends = uninstall
+
+INSTALLS            += headers target
+QMAKE_EXTRA_TARGETS += uninstall distclean
 
 unix:!macx: LIBS += -L$$(QE_TARGET_DIR)/lib/linux-x86_64/ -lQEFramework \
                     -L$$(QE_TARGET_DIR)/lib/linux-x86_64/designer -lQEPlugin \
                     -L$$(QWT_ROOT)/lib/ -lqwt \
                     -L$$(EPICS_BASE)/lib/linux-x86_64/ -lca \
                     -L$$(EPICS_BASE)/lib/linux-x86_64/ -lCom \
+                    -lopencv_core
 
 DEPENDPATH += $$(EPICS_BASE)/include \
               $$(QWT_ROOT)/include \
