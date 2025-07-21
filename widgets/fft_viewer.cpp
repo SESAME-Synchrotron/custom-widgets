@@ -5,11 +5,11 @@ QEFastFourierTransform::QEFastFourierTransform(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QEFastFourierTransform)
 {
-    std::cout << "Constructor start" << std::endl;
     ui->setupUi(this);
 
     for (int i = 0; i < MAX_SOURCES; ++i) {
         pvs.push_back("");
+        titles.push_back("");
     }
 
     this->xAxis = new QValueAxis;
@@ -40,6 +40,11 @@ QEFastFourierTransform::QEFastFourierTransform(QWidget *parent) :
     QObject::connect(this, &QEFastFourierTransform::dataSourceBChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(1); });
     QObject::connect(this, &QEFastFourierTransform::dataSourceCChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(2); });
     QObject::connect(this, &QEFastFourierTransform::dataSourceDChanged, this, [this](QString name) { Q_UNUSED(name); modifySeries(3); });
+
+    QObject::connect(this, &QEFastFourierTransform::dataSourceTitleAChanged, this, [this](QString name) { series[0]->setName(name); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceTitleBChanged, this, [this](QString name) { series[1]->setName(name); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceTitleCChanged, this, [this](QString name) { series[2]->setName(name); });
+    QObject::connect(this, &QEFastFourierTransform::dataSourceTitleDChanged, this, [this](QString name) { series[3]->setName(name); });
 }
 
 QEFastFourierTransform::~QEFastFourierTransform()
@@ -185,4 +190,48 @@ void QEFastFourierTransform::calculateFFT()
     xAxis->setRange(1, points / 2 - 1);
     yAxis->setRange(totalMin, totalMax);
     ui->plot->update();
+}
+
+QString QEFastFourierTransform::dataSourceTitleA()
+{
+    return titles[0];
+}
+
+QString QEFastFourierTransform::dataSourceTitleB()
+{
+    return titles[1];
+}
+
+QString QEFastFourierTransform::dataSourceTitleC()
+{
+    return titles[2];
+}
+
+QString QEFastFourierTransform::dataSourceTitleD()
+{
+    return titles[3];
+}
+
+void QEFastFourierTransform::setDataSourceTitleA(QString name)
+{
+    titles[0] = name;
+    emit dataSourceTitleAChanged(name);
+}
+
+void QEFastFourierTransform::setDataSourceTitleB(QString name)
+{
+    titles[1] = name;
+    emit dataSourceTitleBChanged(name);
+}
+
+void QEFastFourierTransform::setDataSourceTitleC(QString name)
+{
+    titles[2] = name;
+    emit dataSourceTitleCChanged(name);
+}
+
+void QEFastFourierTransform::setDataSourceTitleD(QString name)
+{
+    titles[3] = name;
+    emit dataSourceTitleDChanged(name);
 }

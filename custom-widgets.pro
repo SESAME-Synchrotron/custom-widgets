@@ -9,6 +9,7 @@ MOC_DIR          = $$DESTDIR
 RCC_DIR          = $$DESTDIR
 UI_DIR           = $$DESTDIR
 QMAKE_DISTCLEAN += -r $$DESTDIR
+LIBS            += -lopencv_core
 
 FORMS += \
     widgets/ahu_fan.ui \

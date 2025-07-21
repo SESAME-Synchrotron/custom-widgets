@@ -24,6 +24,10 @@ class QEFastFourierTransform : public QWidget
     Q_PROPERTY(QString dataSourceD READ dataSourceD WRITE setDataSourceD NOTIFY dataSourceDChanged)
     Q_PROPERTY(int numberOfPoints READ numberOfPoints WRITE setNumberOfPoints NOTIFY numberOfPointsChanged)
     Q_PROPERTY(QString title READ titleText WRITE setTitle)
+    Q_PROPERTY(QString dataSourceTitleA READ dataSourceTitleA WRITE setDataSourceTitleA NOTIFY dataSourceTitleAChanged)
+    Q_PROPERTY(QString dataSourceTitleB READ dataSourceTitleB WRITE setDataSourceTitleB NOTIFY dataSourceTitleBChanged)
+    Q_PROPERTY(QString dataSourceTitleC READ dataSourceTitleC WRITE setDataSourceTitleC NOTIFY dataSourceTitleCChanged)
+    Q_PROPERTY(QString dataSourceTitleD READ dataSourceTitleD WRITE setDataSourceTitleD NOTIFY dataSourceTitleDChanged)
 
 public:
     explicit QEFastFourierTransform(QWidget *parent = nullptr);
@@ -44,6 +48,15 @@ public:
     QString titleText();
     void setTitle(QString title);
 
+    QString dataSourceTitleA();
+    QString dataSourceTitleB();
+    QString dataSourceTitleC();
+    QString dataSourceTitleD();
+    void setDataSourceTitleA(QString name);
+    void setDataSourceTitleB(QString name);
+    void setDataSourceTitleC(QString name);
+    void setDataSourceTitleD(QString name);
+
     void calculateFFT();
 
 signals:
@@ -52,6 +65,10 @@ signals:
     void dataSourceCChanged(QString& name);
     void dataSourceDChanged(QString& name);
     void numberOfPointsChanged(int n);
+    void dataSourceTitleAChanged(QString& name);
+    void dataSourceTitleBChanged(QString& name);
+    void dataSourceTitleCChanged(QString& name);
+    void dataSourceTitleDChanged(QString& name);
 
 private:
     Ui::QEFastFourierTransform *ui;
@@ -71,6 +88,7 @@ private:
 
     int points;
     QString text;
+    QStringList titles;
 
     QPen colors[MAX_SOURCES] = {QPen(Qt::red), QPen(Qt::blue), QPen(Qt::green), QPen(Qt::yellow)};
 };
